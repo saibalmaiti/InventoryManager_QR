@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    style="@style/loginParent"
+    tools:context=".newItem">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            style="@style/parent"
+            android:paddingBottom="15dp">
+
+
+            <LinearLayout
+                android:id="@+id/linearhead"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Add Product Details"
+                    android:layout_marginTop="40dp"/>
+
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/uploadedImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linearhead"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_launcher_foreground"/>
+
+            <Button
+                android:id="@+id/selectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearhead"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="95dp"
+                android:layout_toRightOf="@+id/uploadedImage"
+                android:background="@drawable/login_button_bk"
+                android:text="Choose Image" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_below="@+id/uploadedImage"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="15dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textNameProduct"
+                style="@style/parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/uploadedImage">
+                <EditText
+                    android:id="@+id/productName"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="Product Name"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textNameProduct"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="Additional Product Details(*Max 5 lines)"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textProductDetails"
+                style="@style/parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/textView">
+                <EditText
+                    android:id="@+id/productdetails"
+                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/primaryTextColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/addItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textProductDetails"
+                android:layout_marginTop="40dp"
+
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/login_button_bk"
+                android:text="Add Item" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+

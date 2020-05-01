@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064179205075",
+    "firebase_url": "https://inventory-manager-b227d.firebaseio.com",
+    "project_id": "inventory-manager-b227d",
+    "storage_bucket": "inventory-manager-b227d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064179205075:android:b66e073844cd9217986526",
+        "android_client_info": {
+          "package_name": "com.example.inventorymanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064179205075-2s3jg7l59bnic2rhvnaueatbm59amd4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2Qa6U3EasdTbMKWYcKffSt32LHUYt0Jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064179205075-2s3jg7l59bnic2rhvnaueatbm59amd4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
