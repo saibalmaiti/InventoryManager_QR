@@ -117,8 +117,8 @@ public class newItem extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     Upload upload = new Upload(eItem.getText().toString().trim(),
                             task.getResult().toString());
-                    mDatabaseRef.child(eItem.getText().toString()).setValue(upload);
-                    mDatabaseRef.child(eItem.getText().toString()).child("Details").setValue(eDetails.getText().toString());
+                    mDatabaseRef.child(eItem.getText().toString().trim()).setValue(upload);
+                    mDatabaseRef.child(eItem.getText().toString().trim()).child("Details").setValue(eDetails.getText().toString());
 
                     String url = upload.getImageUrl();
                     Log.d("ImageUrl2", url);//debug Statement
@@ -128,8 +128,9 @@ public class newItem extends AppCompatActivity {
                     Intent intent = new Intent(newItem.this,QRgenerator.class);
                     intent.putExtra("Url",url);
                     intent.putExtra("name",name);
-                    intent.putExtra("details",details);
+                    //intent.putExtra("details",details); //delete details
                     startActivity(intent);
+                    finish();
 
                 }
             });
@@ -150,5 +151,11 @@ public class newItem extends AppCompatActivity {
         else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(newItem.this,managerMenu.class));
+        super.onBackPressed();
     }
 }

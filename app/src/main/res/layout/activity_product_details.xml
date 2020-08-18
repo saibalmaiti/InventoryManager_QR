@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     style="@style/loginParent"
-    tools:context=".register">
+    tools:context=".productDetails">
     <ScrollView
-        style="@style/parent">
+        style="@style/parent"
+        android:id="@+id/scrollView">
 
         <RelativeLayout
             style="@style/parent">
 
 
             <LinearLayout
+                android:id="@+id/pdLinear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
@@ -45,17 +47,26 @@
 
                 <TextView
                     style="@style/headerText"
-                    android:layout_gravity="center"
-                    android:text="Inventory Manager"
-                    android:layout_marginTop="40dp"/>
-                <include
-                    layout="@layout/layout_register"/>
+                    android:layout_gravity="left"
+                    android:text="Product Details"
+                    android:textSize="35sp"
+                    android:layout_marginTop="40dp"
+                    />
+
 
             </LinearLayout>
+
         </RelativeLayout>
 
+
     </ScrollView>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="5dp"
+        android:id="@+id/listView">
+
+    </ListView>
 
 </RelativeLayout>
-
-

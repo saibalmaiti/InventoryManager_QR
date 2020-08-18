@@ -38,8 +38,8 @@ public class QRgenerator extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         url = intent.getStringExtra("Url");
-        details = intent.getStringExtra("details");
-        inputValue = name+";"+url+";"+details;
+        //details = intent.getStringExtra("details"); //delete details
+        inputValue = name+";"+url; //+";"+details; //delete details
         qrImage = findViewById(R.id.qr_image);
         activity = this;
         if (inputValue.length() > 0) {
@@ -82,5 +82,11 @@ public class QRgenerator extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(QRgenerator.this,managerMenu.class));
+        super.onBackPressed();
     }
 }

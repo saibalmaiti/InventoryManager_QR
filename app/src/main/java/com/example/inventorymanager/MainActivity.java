@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         {
             if(checkPermission())
             {
-                Toast.makeText(getApplicationContext(), "Permission already granted!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Permission already granted!", Toast.LENGTH_LONG).show();
+                Log.d("PermissionStatus", "Permission already granted");
             }
             else
             {
@@ -122,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     }
     @Override
     public void handleResult(Result result) {
+        Vibrator vb = (Vibrator)   getSystemService(Context.VIBRATOR_SERVICE);
+        vb.vibrate(100);
         final String myResult = result.getText();
         Log.d("QRCodeScanner", result.getText());
         Log.d("QRCodeScanner", result.getBarcodeFormat().toString());
@@ -137,12 +142,28 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
             Intent intent = new Intent(MainActivity.this, addRecord.class);
             intent.putExtra("result", myResult);
             startActivity(intent);
+            finish();
         }
         else if(operation.equals("delete") )
         {
             Intent intent = new Intent(MainActivity.this, deleteRecord.class);
             intent.putExtra("result", myResult);
             startActivity(intent);
+            finish();
+        }
+        else if(operation.equals("deleteItem") )
+        {
+            Intent intent = new Intent(MainActivity.this, deleteItem.class);
+            intent.putExtra("result", myResult);
+            startActivity(intent);
+            finish();
+        }
+        else if(operation.equals("updateItem"))
+        {
+            Intent intent = new Intent(MainActivity.this, updateDetails.class);
+            intent.putExtra("result", myResult);
+            startActivity(intent);
+            finish();
         }
            // }
         //});

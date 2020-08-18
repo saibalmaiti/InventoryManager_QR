@@ -36,6 +36,7 @@ public class register extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private DatabaseReference mRealtime;
     private RadioButton radioManager, radioWorker;
+    private TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class register extends AppCompatActivity {
         radioManager = findViewById(R.id.radioManager);
         radioWorker= findViewById(R.id.radioWorker);
         mRealtime = FirebaseDatabase.getInstance().getReference("User");
+        login = findViewById(R.id.btnSignin);
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +145,13 @@ public class register extends AppCompatActivity {
             }
             }
         });
-
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(register.this,Login.class));
+                register.this.finish();
+            }
+        });
 
     }
 

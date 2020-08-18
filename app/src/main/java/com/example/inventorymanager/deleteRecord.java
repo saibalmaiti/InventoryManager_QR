@@ -3,6 +3,7 @@ package com.example.inventorymanager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,7 +43,8 @@ public class deleteRecord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_record);
         progressDialog = new ProgressDialog(deleteRecord.this);
-        progressDialog.setMessage("Removing");
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
         Intent intent = getIntent();
         scanned = intent.getStringExtra("result");
         name = findViewById(R.id.dproductName);
@@ -60,20 +62,47 @@ public class deleteRecord extends AppCompatActivity {
 
         itemName = scanned.split(";")[0];
         surl = scanned.split(";")[1];
-        itemDetails =scanned.split(";")[2];
+        //itemDetails =scanned.split(";")[2];
 
         Glide.with(deleteRecord.this).load(surl).placeholder(R.drawable.ic_launcher_foreground).into(imageView);
         name.setText(itemName);
-        if(itemDetails!=null){
-            details.setText(itemDetails);
-        }
+//        if(itemDetails!=null){
+//            details.setText(itemDetails);
+//        }
         dateView.setText(currentDate);
 
-        mDatabase.child(itemName).child("Total").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child(itemName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                eAmount = dataSnapshot.getValue().toString();
-                quantity.setText("Existing Quantity: "+eAmount);
+                if(dataSnapshot.exists()) {
+                    eAmount = dataSnapshot.child("Total").getValue().toString();
+                    quantity.setText("Existing Quantity: " + eAmount);
+                    FirebaseDatabase.getInstance().getReference("Products").child("ProductDetails").child(itemName).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String d = dataSnapshot.child("Details").getValue().toString();
+                            if(!d.equals(""))
+                                details.setText(d);
+                            progressDialog.dismiss();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+                else{
+                    name.setVisibility(View.INVISIBLE);
+                    details.setVisibility(View.INVISIBLE);
+                    imageView.setVisibility(View.INVISIBLE);
+                    dateView.setVisibility(View.INVISIBLE);
+                    quantity.setVisibility(View.INVISIBLE);
+                    remove.setVisibility(View.INVISIBLE);
+                    remove.setClickable(false);
+                    progressDialog.dismiss();
+                    Toast.makeText(deleteRecord.this,"Item does not Exists",Toast.LENGTH_SHORT).show();
+                    //startActivity(new Intent(deleteRecord.this,workerMenu.class));
+                }
             }
 
             @Override
@@ -85,6 +114,7 @@ public class deleteRecord extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Deleting");
                 progressDialog.show();
                 mDatabase.child(itemName).child("Total").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -96,15 +126,16 @@ public class deleteRecord extends AppCompatActivity {
                             mDatabase.child(itemName).child("RemoveDate").child(currentDate).setValue("1").addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(deleteRecord.this,"Product Quantity Reduced",Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
-                                    startActivity(new Intent(deleteRecord.this,workerMenu.class));
+                                    //startActivity(new Intent(deleteRecord.this,workerMenu.class));
                                 }
                             });
                         }
                         else{
                             Toast.makeText(deleteRecord.this,"Product Outof Stock",Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
-                            startActivity(new Intent(deleteRecord.this,workerMenu.class));
+                            //startActivity(new Intent(deleteRecord.this,workerMenu.class));
                         }
                     }
                     @Override

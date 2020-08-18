@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,9 +44,11 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Vibrator vb = (Vibrator)   getSystemService(Context.VIBRATOR_SERVICE);
+                vb.vibrate(10);
                 progressDialog.show();
-                semail = email.getText().toString();
-                spassword = password.getText().toString();
+                semail = email.getText().toString().trim();
+                spassword = password.getText().toString().trim();
                 Log.d("!!!",semail+" "+spassword);
                 mauth.signInWithEmailAndPassword(semail,spassword).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -63,12 +67,14 @@ public class Login extends AppCompatActivity {
                                     Log.d("Tag2", currentuser);
                                     Intent intent = new Intent(Login.this,workerMenu.class);
                                     startActivity(intent);
+                                    Login.this.finish();
                                 }
                                 else if(userType.equals("2"))
                                 {
                                     Log.d("Tag",currentuser);
                                     Intent intent = new Intent(Login.this,managerMenu.class);
                                     startActivity(intent);
+                                    Login.this.finish();
                                 }
                             }
 
@@ -90,7 +96,14 @@ public class Login extends AppCompatActivity {
                 Login.this.finish();
             }
         });
-
+        forgetpsw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, forgetPassword.class);
+                startActivity(intent);
+                Login.this.finish();
+            }
+        });
 
     }
     private Boolean checkEmailVerification(){

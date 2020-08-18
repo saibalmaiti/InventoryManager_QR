@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    style="@style/loginParent"
+    tools:context=".help">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            style="@style/parent"
+            android:paddingBottom="15dp">
+
+
+            <LinearLayout
+                android:id="@+id/helphead"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Help Desk"
+                    android:layout_marginTop="40dp"/>
+
+            </LinearLayout>
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/helphead"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:text="Add Item:"
+    android:textSize="20sp" />
+<TextView
+    android:id="@+id/textdetails1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/textView1"
+    android:layout_below="@+id/helphead"
+    android:layout_marginTop="10dp"
+    android:text="To entry record of an item scan the QR code on the product. By scanning the product you can see the details and clicking 'ADD' button you can make an entry."
+    android:layout_marginStart="5dp"
+    android:fontFamily="@font/seogeui"/>
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/textdetails1"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="5dp"
+    android:text="Delete Item:"
+    android:textSize="20sp"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textdetails2"
+    android:layout_toRightOf="@+id/textView2"
+    android:layout_below="@+id/textdetails1"
+    android:layout_marginTop="5dp"
+    android:text="To delte record of an item scan the QR code on the
+    product. By scanning the product you can see the details and existing quantity and clicking 'DELETE' button you can make an entry of product remove."
+    android:layout_marginStart="5dp"
+    android:fontFamily="@font/seogeui"/>
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_below="@+id/textdetails2"
+    android:text="Product \nDetails:"
+    android:textSize="20sp" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textdetails3"
+    android:layout_toEndOf="@+id/textView3"
+    android:layout_below="@+id/textdetails2"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="5dp"
+    android:text="Clicking this button one can see the item available on shelf, and their details."
+    android:fontFamily="@font/seogeui" />
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="100dp"
+    android:layout_height="50dp"
+    android:layout_below="@+id/textdetails3"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:src="@drawable/firebaseicon"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/imageView1"
+    android:text="Version 1.0.Beta"
+    android:layout_marginTop="10dp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+

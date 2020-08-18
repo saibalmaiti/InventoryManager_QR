@@ -40,16 +40,17 @@
                 android:orientation="vertical"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp">
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/workerLogo">
 
 
                 <TextView
                     style="@style/headerText"
                     android:layout_gravity="left"
                     android:text="Worker"
-                    android:textSize="35dp"
+                    android:textSize="35sp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="150dp"/>
+                    />
 
 
             </LinearLayout>
@@ -122,20 +123,31 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <ImageView
+                android:id="@+id/workerLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:src="@android:drawable/ic_menu_close_clear_cancel" />
-            <ImageView
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:src="@drawable/ic_exit_to_app_black_24dp" />
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Log Out"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/workerLogout"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"/>
+            <ImageView
+                android:id="@+id/workerLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/worker2"/>
         </RelativeLayout>
 
